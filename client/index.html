@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Push Notification with payload retrieval - ServiceWorker Cookbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: monospace;
+      font-size: 1rem;
+      white-space: pre-wrap;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .item {
+      text-align: center;
+      display: grid;
+      place-items: center;
+      background: #ccc;
+      border: 2px solid #000;
+      font-size: 16px;
+      border-radius: 10px;
+      max-width: 200px;
+      margin:0 auto;
+      min-height: 150px;
+    }
+
+    .item--first {
+      font-size: 20px;
+      background: green;
+      color: #fff;
+      animation: pop 1s linear infinite;
+    }
+
+    .item--blue {
+      color:#fff;
+      font-size: 20px;
+      background: navy;
+      animation: pop 1s linear infinite;
+    }
+
+    .item--mango {
+      background: yellow;
+      color: #000;
+      font-size: 20px;
+      animation: pop 1s linear infinite;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(1) rotate(0deg);
+      }
+
+      25% {
+        transform: scale(0.99) rotate(1deg);
+      }
+
+      50% {
+        transform: scale(0.98) rotate(0deg);
+      }
+
+      75% {
+        transform: scale(0.99) rotate(-1deg);
+      }
+
+      100% {
+        transform: scale(1) rotate(0deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid">
+    <div class="item" id="first">Type 'first' to get this hightlighted</div>
+    <div class="item" id="blue">Type 'blue' to get this hightlighted</div>
+    <div class="item" id="mango">Type 'mango' to get this highlighted </div>
+  </div>
+  <form>
+    Notification payload: <input id='notification-payload' type='text' value='first'></input>
+    Notification delay: <input disabled id='notification-delay' type='number' value='0'></input> seconds
+    Notification Time-To-Live: <input disabled id='notification-ttl' type='number' value='0'></input> seconds
+  </form>
+
+  <button id="doIt">Request sending a notification!</button>
+
+  <script src="/tools.js"></script>
+  <script src="./index.js"></script>
+</body>
+
+</html>
